@@ -1,0 +1,40 @@
+PATH
+  remote: .
+  specs:
+    job-concurrency (0.1.0)
+      redlock
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    connection_pool (2.4.1)
+    diff-lcs (1.5.0)
+    rake (12.3.3)
+    redis-client (0.17.0)
+      connection_pool
+    redlock (2.0.4)
+      redis-client (>= 0.14.1, < 1.0.0)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  job-concurrency!
+  rake (~> 12.0)
+  rspec (~> 3.0)
+
+BUNDLED WITH
+   2.1.4
