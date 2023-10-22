@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-RSpec.describe Job::Concurrency do
+RSpec.describe JobConcurrency do
 end

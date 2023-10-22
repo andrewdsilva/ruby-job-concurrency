@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/job/concurrency/version'
+require_relative 'lib/job_concurrency'
 
 Gem::Specification.new do |spec|
   spec.name          = 'job-concurrency'
-  spec.version       = Job::Concurrency::VERSION
+  spec.version       = JobConcurrency::VERSION
   spec.authors       = ['Nathan Lopez']
   spec.email         = ['nathan.lopez042@gmail.com']
 
