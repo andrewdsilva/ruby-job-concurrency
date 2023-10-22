@@ -7,3 +7,8 @@ gemspec
 
 gem 'rake', '~> 12.0'
 gem 'rspec', '~> 3.0'
+
+group :development, :test do
+  gem 'rails'
+  gem 'rspec-rails'
+end

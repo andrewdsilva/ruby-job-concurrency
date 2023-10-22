@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Include this class to your job and call with_limit to apply limitation
-class JobConcurrency
+module JobConcurrency
   VERSION = '0.1.0'
 
   def redlock
@@ -28,7 +28,7 @@ class JobConcurrency
   #     with_limit(...) do
   #       # some stuff
   #     end
-  # end
+  #   end
   def with_limit(
     queue_name: default_queue_name,
     max_concurrency: default_max_concurrency,
@@ -50,13 +50,13 @@ class JobConcurrency
 
       wait_interval(minimum_interval)
 
-      lock_manager.unlock(lock)
+      redlock.unlock(lock)
       job_done = true
 
       break
     end
 
-    self.class.perform_in(retry_random_delay(max_retry_delay), **job_params) unless job_done
+    self.class.set(wait: retry_random_delay(max_retry_delay)).perform_later(**job_params) unless job_done
   end
 
   def start_job
@@ -72,7 +72,7 @@ class JobConcurrency
   end
 
   def wait_interval(minimum_interval)
-    sleep((minimum_interval - job_duration).to_f / 1000) if minimum_interval
+    sleep((minimum_interval - job_duration).to_f / 1000) if minimum_interval.positive?
   end
 
   def retry_random_delay(max)
